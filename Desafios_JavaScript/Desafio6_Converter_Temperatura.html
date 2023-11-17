@@ -17,13 +17,22 @@
         <button class="ajust_button" id="botao">Converter</button>
 
         <script type="text/javascript" defer>
-            function converterTemp()
+            document.getElementById('botao').addEventListener("click", function() 
             {
-                let c,f;
-                window.prompt("Digite uma temperatura em ºC (Celsius): ");
-                f = 
-            }
+                let print,c,f,k;
+                c = window.prompt("Digite uma temperatura em ºC (Celsius): ");
+                k = 273.15 + (c*1);//a variável em um numero operavel ao multiplicala
+                f = (c * 1.8) + 32;
+
+                print = document.getElementById("print");
+                print.innerHTML = '<p><strong>A temperatura de '+c.toString().replace('.',',')+' ºC, corresponde a...</strong></p><br>'+
+                '<p>'+k+'°K (Kelvin)</p>'+
+                '<p>'+f+'°F (Fahrenheit)</p>';
+            });
         </script>
+        
+        <div id="print">
+        </div>
 
     </body>
 </html>
