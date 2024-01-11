@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .ajust_button
+            {
+                width: auto;
+                height: 50px;
+            }
+        </style>
+        <title>Ano Bissexto</title>
+    </head>
+    <body>
+        <h1><strong>Ano Bissexto</strong></h1>
+        <button class="ajust_button" id="botao">Verificar</button>
+        <p id="print">Informe um ano para saber se ele é bissexto</p>
+
+        <script text="text/javascript" defer>
+            document.getElementById('botao').addEventListener('click', function()
+            {
+                let ano, booleano, printer;
+
+                do
+                {
+                    ano = window.prompt("Qual o ano que você quer verificar?");
+                    ano = parseInt(ano);
+                    if(isNaN(ano))
+                    {
+                        window.alert("O valor digitado não é um ano.\nTente novamente :)");
+                    }
+                }
+                while(isNaN(ano));
+                booleano = (ano%4) == 0? "É BISSEXTO &#65039":"NÃO É BISSEXTO &#10060"
+                printer = document.getElementById('print');
+                printer.innerHTML = '<h2><strong>Analisando o ano de '+ano+'</strong></h2>'
+                +'<p>O ano de '+ano+' <strong>'+booleano+'</strong></p>';
+            });
+        </script>
+    </body>
+</html>
