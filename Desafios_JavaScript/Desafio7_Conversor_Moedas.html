@@ -20,12 +20,18 @@
         <script text="type/javascript" defer>
             let cotacao, dolar, real;
             cotacao = window.prompt('Antes de mais nada, quanto está a cotação do dolar agora?');
-            window.prompt
+
             document.getElementById('botao').addEventListener('click', function()
             {
-                 window.prompt('Quants R$ você tem disponíveis?');
-                 
+                real = window.prompt('Quantos reais você tem disponíveis?');
+                dolar = cotacao * real;
+                window.alert('Seus R$'+real+' totalizam U$'+dolar+' doletas americanas :)');
+                let print;
+                print = window.document.getElementById("print");
+                print.innerHTML = 'Seus R$'+real+' totalizam U$'+dolar+' doletas americanas :)';
             });
         </script>
+
+        <div id="print"></div>
     </body>
 </html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .ajust_button
+            {
+                width: auto;
+                height: 50px;
+            }
+        </style>
+        <title>Reajuste Salarial</title>
+    </head>
+    <body>
+        <button class="ajust_button" id="botao">Reajuste Salarial</button>
+        <p>Clique no botão acima para iniciar.</p>
+        <script type="text/javascript" defer>
+            document.getElementById('botao').addEventListener('click', function()
+            {
+                let printer, nome, salarioAtual, salarioFinal, reajuste;
+                nome = window.prompt('Qual é o nome do funcionário?');
+                salarioAtual = window.prompt('Qual é o salário de '+nome+'?');
+                reajuste = window.prompt('O salário de '+nome+' vai ser reajustado em qual porcentagem?');
+                if(nome.toString() == true && parseFloat(salarioAtual) == true && reajuste <= 100 && reajuste>=0)
+                {
+                    salarioFinal = salarioAtual *reajuste;
+                    
+                }
+
+
+            });
+        </script>
+    </body>
+</html>
