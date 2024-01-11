@@ -20,13 +20,24 @@
             document.getElementById("botao").addEventListener('click', function()
             {
                 let a, b, c, resultado, printer;
-
-                a = window.prompt('Qual é o valor de a?');
-                b = window.prompt('Qual é o valor de b?');
-                c = window.prompt('Qual é o valor de c?');
+                do
+                {
+                    a = window.prompt('Qual é o valor de a?');
+                    a = parseFloat(a);
+                    b = window.prompt('Qual é o valor de b?');
+                    b = parseFloat(b);
+                    c = window.prompt('Qual é o valor de c?');
+                    c = parseFloat(c);
+                    
+                    if(isNaN(a) ||isNaN(b) || isNaN(c))
+                    {
+                        window.alert("Algum(s) valores foram digitados incorretamente\nTente Novamente");
+                    }
+                }
+                while(isNaN(a) ||isNaN(b) || isNaN(c));
 
                 resultado = (b*b)-(4*(a*c));
-
+                
                 printer = document.getElementById('print');
                 printer.innerHTML = '<h2><strong>Resolvendo Bhaskara</strong></h2>'
                 +'<p>A equação atual é <strong>'+a+'x² + '+b+'x + '+c+' = 0</strong></p>'
