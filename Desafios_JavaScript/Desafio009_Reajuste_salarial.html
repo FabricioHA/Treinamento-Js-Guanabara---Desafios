@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .ajust_button
+            {
+                width: auto;
+                height: 50px;
+            }
+        </style>
+        <title>Reajuste Salarial</title>
+    </head>
+    <body>
+        <h1><strong>Reajuste salarial</strong></h1>
+        <button class="ajust_button" id="botao">Reajuste Salarial</button>
+        <p>Clique no botão acima para iniciar.</p>
+        <script type="text/javascript" defer>
+            document.getElementById('botao').addEventListener('click', function()
+            {
+                let printer, nome, salarioAtual, salarioFinal, reajuste, valorAcrecido;
+
+                do
+                {
+                    nome = window.prompt('Qual é o nome do funcionário?');
+                    salarioAtual = window.prompt('Qual é o salário de '+nome+'?');
+                    salarioAtual = parseFloat(salarioAtual);
+                    reajuste = window.prompt('O salário de '+nome+' vai ser reajustado em qual porcentagem?');
+                    reajuste = parseFloat(reajuste);
+                    if(!(isNaN(nome)) || isNaN(salarioAtual) || isNaN(reajuste))
+                    {
+                        window.alert("Algum(s) valores foram digitados incorretamente\nTente Novamente");
+                    }
+                }
+                while(!(isNaN(nome)) || isNaN(salarioAtual) || isNaN(reajuste));      
+                
+                reajuste = reajuste/100;
+                valorAcrecido = salarioAtual*reajuste;
+                salarioFinal= salarioAtual+valorAcrecido;
+
+                printer = window.document.getElementById("print");
+                printer.innerHTML = '<h2><strong>'
+                +nome+' Recebeu um aumento salarial</strong></h2>'
+                +'<p>O salario atual era R$'
+                +salarioAtual+'.</p>'
+                +'<p>Com um aumento de '
+                +reajuste*100+'%, o salario vai aumentar R$'
+                +valorAcrecido.toFixed(2)+' no próximo mês</p>'
+                +'<p>E a partir daí, '
+                +nome+' vai passar a ganhar R$'
+                +salarioFinal.toFixed(2)+'.</p>';
+            });
+        </script>
+        <div id="print"></div>
+    </body>
+</html>
