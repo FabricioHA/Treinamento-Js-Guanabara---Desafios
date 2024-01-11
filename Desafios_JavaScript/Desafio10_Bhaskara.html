@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .ajust_button
+            {
+                width: auto;
+                height: 50px;
+            }
+        </style>
+        <title>Fórmula do Bhaskara</title>
+    </head>
+    <body>
+        <h1>Resolvendo Bhaskara</h1>
+        <button class="ajust_button" id="botao">Calcular</button>
+        <p id="print">Considerando uma equação no formato <strong><i>ax² + bx + c</i></strong> = 0, aperte<br>o botão para calcular o valor de Δ.</p>
+
+        <script text="text/javascript" defer>
+            document.getElementById("botao").addEventListener('click', function()
+            {
+                let a, b, c, resultado, printer;
+
+                a = window.prompt('Qual é o valor de a?');
+                b = window.prompt('Qual é o valor de b?');
+                c = window.prompt('Qual é o valor de c?');
+
+                resultado = (b*b)-(4*(a*c));
+
+                printer = document.getElementById('print');
+                printer.innerHTML = '<h2><strong>Resolvendo Bhaskara</strong></h2>'
+                +'<p>A equação atual é <strong>'+a+'x² + '+b+'x + '+c+' = 0</strong></p>'
+                +'<p>O cáculo realizado será <strong>Δ = '+b+'² -4 * '+a+' * '+c+'</strong></p>'
+                +'<p>O valor calculado foi <strong>Δ = '+resultado+'</strong></p>'
+            });
+        </script>
+    </body>
+</html>

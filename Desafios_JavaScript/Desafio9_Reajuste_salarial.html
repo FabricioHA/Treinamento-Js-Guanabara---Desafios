@@ -12,23 +12,36 @@
         <title>Reajuste Salarial</title>
     </head>
     <body>
+        <h1><strong>Reajuste salarial</strong></h1>
         <button class="ajust_button" id="botao">Reajuste Salarial</button>
         <p>Clique no botão acima para iniciar.</p>
         <script type="text/javascript" defer>
             document.getElementById('botao').addEventListener('click', function()
             {
-                let printer, nome, salarioAtual, salarioFinal, reajuste;
+                let printer, nome, salarioAtual, salarioFinal, reajuste, valorAcrecido;
                 nome = window.prompt('Qual é o nome do funcionário?');
                 salarioAtual = window.prompt('Qual é o salário de '+nome+'?');
                 reajuste = window.prompt('O salário de '+nome+' vai ser reajustado em qual porcentagem?');
-                if(nome.toString() == true && parseFloat(salarioAtual) == true && reajuste <= 100 && reajuste>=0)
-                {
-                    salarioFinal = salarioAtual *reajuste;
-                    
-                }
+                
+                reajuste = reajuste/100;
+                valorAcrecido = salarioAtual*reajuste;
+                salarioFinal= parseFloat(salarioAtual)+parseFloat(valorAcrecido);
+
+                printer = window.document.getElementById("print");
+                printer.innerHTML = '<h2><strong>'
+                +nome+' Recebeu um aumento salarial</strong></h2>'
+                +'<p>O salario atual era R$'
+                +salarioAtual+'.</p>'
+                +'<p>Com um aumento de '
+                +reajuste*100+'%, o salario vai aumentar R$'
+                +valorAcrecido.toFixed(2)+' no próximo mês</p>'
+                +'<p>E a partir daí, '
+                +nome+' vai passar a ganhar R$'
+                +salarioFinal.toFixed(2)+'.</p>';
 
 
             });
         </script>
+        <div id="print"></div>
     </body>
 </html>
