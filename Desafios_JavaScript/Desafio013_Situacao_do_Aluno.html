@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .ajust_button
+            {
+                width: auto;
+                height: 50px;
+            }
+        </style>
+        <title>Situação do aluno</title>
+    </head>
+    <body>
+        <h1>Situação do aluno</h1>
+        <button id="botao" class="ajust_button">Entre com as notas</button>
+        <p id="print">Clique no botão acima para informar as notas do aluno.</p>
+
+        <script text="text/javascript" defer>
+            document.getElementById('botao').addEventListener('click', function()
+            {
+                let aluno, n1, n2, media, situacao, printer;
+
+                do
+                {
+                    aluno = window.prompt("Qual é o nome do aluno?");
+                    n1 = window.prompt("primeira nota de "+aluno+":");
+                    n1 = parseFloat(n1);
+                    n2 = window.prompt("Segunda nota de "+aluno+":");
+                    n2 = parseFloat(n2);
+                    if(!(isNaN(aluno)) || isNaN(n1) || isNaN(n2))
+                    {
+                        window.alert("Os valores digitados são invalidos!\nDigite novamente");
+                    }
+                }while(!(isNaN(aluno)) || isNaN(n1) || isNaN(n2));
+
+                media = n1+n2/5;
+                media = parseFloat(media);
+
+                situacao = media<3?'abaixo de 3.0, o aluno está <mark style="background-color:#e28783"><strong>REPROVADO</strong></mark>':media>=3&&media<=6?'entre 3.0 e 6.0, o aluno está em <strong style="color:#c3884b">RECUPERAÇÃO</strong>':'acima de 6.0, o aluno está <mark style="background-color:#a6eb9a"><strong>APROVADO</strong</mark>';
+
+                printer = document.getElementById('print');
+                printer.innerHTML = '<h2>Analisando a situação de '+aluno+'</h2>'
+                +'<p>Com as notas '+n1.toFixed(2)+' e '+n2.toFixed(2)+' a <strong>média é '+media.toFixed(2)+'</strong></p>'
+                +'<p>Com a média '+situacao+'</p>';
+            });
+        </script>
+    </body>
+</html>

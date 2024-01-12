@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .ajust_button
+            {
+                width: auto;
+                height: 50px;
+            }
+        </style>
+        <title>Preço Mudou</title>
+    </head>
+    <body>
+        <h1>Preço Mudou</h1>
+        <button class="ajust_button" id="botao">Verificar</button>
+        <p id="print">Clique no botão acima para analisar a mudança de preço.</p>
+
+        <script text="text/javascript" defer>
+            document.getElementById('botao').addEventListener("click", function()
+            {
+                let precoAnterior, precoAtual, printer, estadoPreco, diferencaPreco, variacao;
+
+                do
+                {
+                    precoAnterior = window.prompt("Qual era o preço anterior do produto?");
+                    precoAnterior = parseFloat(precoAnterior);
+                    precoAtual = window.prompt("Qual é o preço atual do produto?");
+                    precoAtual = parseFloat(precoAtual);
+                    if(isNaN(precoAnterior) || isNaN(precoAtual))
+                    {
+                        window.alert("Os valores digitados são invalidos\nDigite novamente :)");
+                    }
+                }while(isNaN(precoAnterior) || isNaN(precoAtual));
+
+                estadoPreco = precoAtual==precoAnterior? 'com o mesmo preço': precoAtual>precoAnterior?'mais caro':'mais barato';
+
+                diferencaPreco = precoAtual==precoAnterior?'manteve-se o mesmo':precoAtual>precoAnterior?'subiu R$'+((parseFloat(precoAtual)-parseFloat(precoAnterior)).toFixed(2)).toString():'caiu R$'+((parseFloat(precoAnterior)-parseFloat(precoAtual)).toFixed(2)).toString();
+
+                variacao = precoAtual==precoAnterior?'0% na risca':precoAtual>precoAnterior? (100* (precoAtual-precoAnterior)/precoAtual).toFixed(2) + '% para cima':(100* (precoAnterior-precoAtual)/precoAtual).toFixed(2) + '% para baixo';
+
+                printer = document.getElementById('print');
+                printer.innerHTML = '<h2>Analisando os valores Informados</h2>'
+                +'<p>O produto custava R$'+precoAnterior.toFixed(2)+' e agora custa R$'+precoAtual.toFixed(2)+'.</p>'
+                +'<p>hoje o produto está '+estadoPreco+'.</p>'                
+                +'<p>O preço '+diferencaPreco+' em relação ao preço anterior.</p>'
+                +'<p>Uma variação de '+variacao+'.</p>';
+            });
+        </script>
+    </body>
+</html>
