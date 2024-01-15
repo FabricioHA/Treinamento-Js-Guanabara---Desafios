@@ -32,9 +32,13 @@
                     {
                         window.alert("Os valores digitados são invalidos!\nDigite novamente");
                     }
-                }while(!(isNaN(aluno)) || isNaN(n1) || isNaN(n2));
+                    else if(n1<0 || n1>10 || n2 <0 || n2> 10)
+                    {
+                        window.alert("As notas digitadas são menores do que zero ou maiores do que 10\n\nDigite novamente");
+                    }
+                }while(!(isNaN(aluno)) || isNaN(n1) || isNaN(n2) || n1<0 || n1>10 || n2 <0 || n2> 10);
 
-                media = n1+n2/5;
+                media = (n1+n2)/2;
                 media = parseFloat(media);
 
                 situacao = media<3?'abaixo de 3.0, o aluno está <mark style="background-color:#e28783"><strong>REPROVADO</strong></mark>':media>=3&&media<=6?'entre 3.0 e 6.0, o aluno está em <strong style="color:#c3884b">RECUPERAÇÃO</strong>':'acima de 6.0, o aluno está <mark style="background-color:#a6eb9a"><strong>APROVADO</strong</mark>';
