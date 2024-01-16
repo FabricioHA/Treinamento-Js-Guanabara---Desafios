@@ -145,3 +145,60 @@ function Desafio05_Converter_Medidas()
     '<p>'+cm.toString().replace('.',',')+' Centímetros (Cm)</p>'+
     '<p>'+mm.toString().replace('.',',')+' Milímetros (Mm)</p>';
 }
+//Fim Desafio 05
+
+//Inicio Desafio 06 Converter Temperatura
+function Desafio06_Converter_Temperatura()
+{
+    let print,c,f,k;
+    do
+    {
+        c = window.prompt("Digite uma temperatura em ºC (Celsius): ");
+        c = parseFloat(c);
+
+        if(isNaN(c))
+        {
+            window.alert("O valor digitado é inválido!\nDigite novamente.");
+        }
+    }while(isNaN(c));
+    
+    k = 273.15 + (c*1);//a variável em um numero operavel ao multiplicala
+    k = parseFloat(k);
+    f = (c * 1.8) + 32;
+    f = parseFloat(f);
+
+    print = document.getElementById("print");
+    print.innerHTML = '<p><strong>A temperatura de '+c.toString().replace('.',',')+' ºC, corresponde a...</strong></p><br>'+
+    '<p>'+(k.toFixed(2)).toString().replace('.',',')+'°K (Kelvin)</p>'+
+    '<p>'+(f.toFixed(2)).toString().replace('.',',')+'°F (Fahrenheit)</p>';
+}
+//Fim Desafio 06
+
+//Inicio Desafio 07 Conversor de moedas
+function SolicitarCotacaoDolar(ctc)
+{
+    do
+    {
+        ctc = window.prompt('Antes de mais nada, quanto está a cotação do dolar agora?');
+        ctc = parseFloat(ctc);
+        if(isNaN(ctc)||ctc<0)
+        {
+            window.alert("Valores digitados incorretamente!\nDigite novamente,");
+        }
+    }while(isNaN(ctc)||ctc<0);
+    return ctc;
+}
+function Desafio07_Conversor_Moedas()
+{
+    let real, cotacao, dolar, print;
+    cotacao = SolicitarCotacaoDolar(this);
+    cotacao = parseFloat(cotacao);
+    real = window.prompt('Quantos reais você tem disponíveis?');
+    real = parseFloat(real);
+
+    dolar = cotacao * real;
+    dolar = parseFloat(dolar);
+    
+    print = window.document.getElementById("print");
+    print.innerHTML = 'Seus R$'+real+' totalizam U$'+dolar+' doletas americanas :)';
+}
